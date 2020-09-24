@@ -1,21 +1,13 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
 
-import io
-import yaml
-
 from torch.nn.functional import smooth_l1_loss
 from torch.optim import RMSprop
 
 from maro.rl import AbsAgentManager, LearningModel, MLPDecisionLayers, DQN, DQNHyperParams, ColumnBasedStore
-from maro.utils import convert_dottable, set_seeds
+from maro.utils import set_seeds
 from .agent import CIMAgent
-
-
-with io.open("config.yml", "r") as in_file:
-    raw_config = yaml.safe_load(in_file)
-    config = convert_dottable(raw_config)
-    config = config.agents
+from examples.cim.dqn.config import config
 
 
 class DQNAgentManager(AbsAgentManager):

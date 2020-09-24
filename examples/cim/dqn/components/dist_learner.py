@@ -2,19 +2,13 @@
 # Licensed under the MIT license.
 
 import os
-import io
-import yaml
 
 from maro.simulator import Env
 from maro.rl import ActorProxy, SimpleLearner, AgentMode, TwoPhaseLinearExplorer
 from examples.cim.dqn.components.state_shaper import CIMStateShaper
-from maro.utils import Logger, convert_dottable
+from maro.utils import Logger
 from examples.cim.dqn.components.agent_manager import DQNAgentManager
-
-
-with io.open("config.yml", "r") as in_file:
-    raw_config = yaml.safe_load(in_file)
-    config = convert_dottable(raw_config)
+from examples.cim.dqn.config import config
 
 
 if __name__ == "__main__":
